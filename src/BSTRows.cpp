@@ -59,7 +59,7 @@ void row(struct node* root, int *arr, int *i, int level_of_node)
 int* BSTRighttoLeftRows(struct node* root)
 {
 	if (root == NULL)	return NULL;
-	int *arr = (int *)malloc(sizeof(int));
+	int *arr = (int *)malloc(sizeof(int)*20);
 	int height = height_of_bst(root);
 	int i = 0;
 	for (int j = 1; j <= height; j++)
