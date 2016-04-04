@@ -22,14 +22,75 @@ struct node{
 	struct node *right;
 };
 
-
+void in(struct node *root, int *arr, int *i)
+{
+	if (root == NULL)
+	{
+		return;
+	}
+	if (root != NULL)
+	{
+		in(root->left, arr, i);
+		arr[*i] = root->data;
+		*i = *i + 1;
+		in(root->right, arr, i);
+	}
+}
 void inorder(struct node *root, int *arr){
-	
+	int i = 0;
+
+	if (root == NULL || arr == NULL)
+		return;
+	in(root, arr, &i);
+	return;
+}
+
+
+void pre(struct node *root, int *arr, int *i)
+{
+	if (root == NULL)
+	{
+		return;
+	}
+	if (root != NULL)
+	{
+		arr[*i] = root->data;
+		*i = *i + 1;
+		pre(root->left, arr, i);
+
+		pre(root->right, arr, i);
+	}
 }
 void preorder(struct node *root, int *arr){
-	
+	int i = 0;
+
+	if (root == NULL || arr == NULL)
+		return;
+	pre(root, arr, &i);
+	return;
+}
+
+void post(struct node *root, int *arr, int *i)
+{
+	if (root == NULL)
+	{
+		return;
+	}
+	if (root != NULL)
+	{
+		post(root->left, arr, i);
+		post(root->right, arr, i);
+		arr[*i] = root->data;
+		*i = *i + 1;
+	}
 }
 void postorder(struct node *root, int *arr){
-	
+	int i = 0;
+
+	if (root == NULL || arr == NULL)
+		return;
+	post(root, arr, &i);
+	return;
 }
+
 
